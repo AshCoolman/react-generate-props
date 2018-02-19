@@ -65,9 +65,9 @@ const generateOneProp = (propType, propName) => {
   if (generate) {
     if (shouldGenerate(propType)) {
       if (propName) {
-        return [propName, generate(arg)]
+        return [propName, generate(arg, { propName })]
       } else {
-        return generate(arg)
+        return generate(arg, { propName })
       }
     }
   }
@@ -77,7 +77,7 @@ const forceGenerateOneProp = (propType) => {
   const generate = GENERATORS[propType.type]
   const arg = propType.arg
   if (generate) {
-    return generate(arg)
+    return generate(arg, { propName })
   }
 }
 
